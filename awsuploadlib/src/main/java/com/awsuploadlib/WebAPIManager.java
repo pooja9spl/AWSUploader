@@ -1,8 +1,5 @@
 package com.awsuploadlib;
 
-import java.io.File;
-
-import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
 public class WebAPIManager {
@@ -21,9 +18,7 @@ public class WebAPIManager {
         return INSTANCE2;
     }
 
-    public void uploadImageAws(String imageUrlLocal, String url, RemoteCallback<Void> listener) {
-        String CONTENT_IMAGE = "image/jpg";
-        RequestBody requestBody = RequestBody.create(MediaType.parse(CONTENT_IMAGE), new File(imageUrlLocal));
+    public void uploadImageAws(RequestBody requestBody, String url, RemoteCallback<Void> listener) {
         mService2.uploadImageOnAws(null, url, requestBody).enqueue(listener);
     }
 
